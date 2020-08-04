@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>路由</h1>
+        <router-link to='/a'>去a</router-link>
+        <router-link to='/b'>去b</router-link>
+        <hr>
+        <router-view></router-view>
+    </div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+<script>
+    let coma = {
+		template:"<div>组件A</div>"
+	}
+	let comb = {
+		template:"<div>组件B</div>"
+	}
+	
+	const routes = [
+		{
+			path:"/a",component:coma
+		},
+		{
+			path:"/b",component:comb
+		}
+	]
+
+    let router = new VueRouter({
+        routes
+    });
+    
+    let vm = new Vue({
+        el:"#app",
+        router,
+        components:{
+            coma,comb
+        }
+    });
+</script>
